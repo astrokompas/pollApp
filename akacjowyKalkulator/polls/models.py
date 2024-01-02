@@ -10,8 +10,9 @@ class question(models.Model):
     def __str__(self) -> str:
         return self.questionText
     
-    def was_published_recently(self):
-        return self.pubDate >= timezone.now() - datetime.timedelta(days = 1)
+    def wasPublishedRecently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days = 1) <= self.pubDate <= now
     
 
 class choice(models.Model):
